@@ -49,6 +49,15 @@ void CallStack::update(int32_t ignoreDepth, pid_t tid) {
     }
 }
 
+#if 1 //#ifdef  MTK_MT6589
+void CallStack::update(int32_t ignoreDepth, int32_t maxDepth, pid_t tid) {
+	
+	ALOGW("%s: maxDepth = %d", __FUNCTION__, maxDepth);
+	
+	update (ignoreDepth, tid);
+}
+#endif
+
 void CallStack::log(const char* logtag, android_LogPriority priority, const char* prefix) const {
     LogPrinter printer(logtag, priority, prefix, /*ignoreBlankLines*/false);
     print(printer);
