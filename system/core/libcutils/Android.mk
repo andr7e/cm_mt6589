@@ -117,6 +117,7 @@ LOCAL_SRC_FILES := $(commonSources) \
         qtaguid.c \
         trace.c \
         uevent.c \
+	pmem-dev.cpp \
 
 LOCAL_SRC_FILES_arm += \
         arch-arm/memset32.S \
