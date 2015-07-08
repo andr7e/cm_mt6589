@@ -30,9 +30,16 @@ CallStack::CallStack() {
 }
 
 CallStack::CallStack(const char* logtag, int32_t ignoreDepth) {
-    this->update(ignoreDepth+1);
+	this->update(ignoreDepth+1);
+	this->log(logtag);
+}
+
+#if 1 //#ifdef  MTK_MT6589 
+CallStack::CallStack(const char* logtag, int32_t ignoreDepth, int32_t maxDepth) {
+    this->update(ignoreDepth+1, maxDepth, BACKTRACE_CURRENT_THREAD);
     this->log(logtag);
 }
+#endif
 
 CallStack::~CallStack() {
 }

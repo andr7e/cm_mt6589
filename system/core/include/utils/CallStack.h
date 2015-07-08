@@ -32,11 +32,20 @@ class Printer;
 // Collect/print the call stack (function, file, line) traces for a single thread.
 class CallStack {
 public:
+
     // Create an empty call stack. No-op.
     CallStack();
     // Create a callstack with the current thread's stack trace.
     // Immediately dump it to logcat using the given logtag.
     CallStack(const char* logtag, int32_t ignoreDepth=1);
+    
+#if 1 //#ifdef  MTK_MT6589            
+    // Create a callstack with the current thread's stack trace.
+    // Immediately dump it to logcat using the given logtag.
+    CallStack(const char* logtag, int32_t ignoreDepth,
+            int32_t maxDepth);
+#endif
+
     ~CallStack();
 
     // Reset the stack frames (same as creating an empty call stack).
